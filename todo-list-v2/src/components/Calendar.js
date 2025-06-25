@@ -4,16 +4,25 @@ import { FlatList, View, Text } from 'react-native';
 import styles from '../assets/StyleSheets';
 import Daybox from './DayBox';
 
-const mes = [
-    {nomeDia: 'QUA', numDia: 25},
-    {nomeDia: 'QUI', numDia: 26},
-    {nomeDia: 'SEX', numDia: 27},
-    {nomeDia: 'SAB', numDia: 28},
-    {nomeDia: 'DOM', numDia: 29},
-    {nomeDia: 'SEG', numDia: 30},
-]
+let calendario = [];
+let diaHoje = new Date();
+
+function createCalendar(){
+    for(let i = -1; i <= 14; i++) {
+        const data = new Date();
+        data.setDate(diaHoje.getDate() + i);
+
+        calendario.push({
+            nomeDia: ['DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB'][data.getDay()],
+            numDia: data.getDate(),
+            isToday: diaHoje.toDateString() == data.toDateString(),
+        })
+    }
+}
+
 
 export default function Calendar(){
+    createCalendar();
     return (
         <View style={styles.calendar}>
             <Text style={styles.calendarTitle} >
@@ -21,14 +30,13 @@ export default function Calendar(){
             </Text>
 
             <FlatList
-            data={mes}
+            data={calendario}
             horizontal
             showsHorizontalScrollIndicator={false}
             keyExtractor={((item) => {item.numDia.toString()})}
             renderItem={({item}) => (
                 <Daybox
-                nomeDia={item.nomeDia}
-                numDia={item.numDia}
+                data={item}
                 />
             )}
             ItemSeparatorComponent={() => <View style={{ width: 20 }} />}

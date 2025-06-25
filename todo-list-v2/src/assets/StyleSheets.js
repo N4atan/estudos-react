@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyleSheet } from 'react-native';
+import TaskWritter from '../components/TaskWriter';
 
 const styles = StyleSheet.create({
     container: {
@@ -24,28 +25,69 @@ const styles = StyleSheet.create({
         height: 80,
         borderWidth: 1,
         borderColor: '#626262',
-        borderRadius: 10,
+        borderRadius: 5,
         justifyContent: 'center',
         alignItems: 'center',
         shadowColor: '#141414',
-        shadowOffset: { width: 1, height: 2 },
+        shadowOffset: { width: 1, height: 3},
         shadowOpacity: 0.3,
-        shadowRadius: 2,
+        shadowRadius: 5,
     },
     dayBoxText: {
         fontSize: 16,
         color: '#161616',
         fontWeight: '600'
     },
+    dayBoxToday: {
+        backgroundColor:  '#d9d9d9',
+        
+    },
     calendar: {
         marginTop: 34,
     },
     calendarTitle: {
         marginLeft: 24,
-        marginBottom: 12,
+        marginBottom: 16,
         fontSize: 28,
         fontWeight: '700'
     },
+    fixedFooter: {
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+    },
+    areaTaskWritter: {
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        alignSelf: 'center',
+        justifyContent: 'space-between',
+        width: '90%',
+        marginTop: 'auto',
+        marginBottom: 34
+    },
+    taskWritterInput: {
+        backgroundColor: '#f0f0f0',
+        color: '#141414',
+        fontSize: 14,
+        width: '75%', // ✅ Ajuste para 75% (evita conflito com o botão)
+        height: 60,
+        paddingLeft: 10,
+        borderRadius: 5,
+    },
+    taskWritterSave: {
+        backgroundColor: '#141414',
+        width: '23%', // ✅ Ajuste para 23% (evita quebra de linha)
+        height: 60,
+        borderRadius: 5,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    taskWritterSaveText: {
+        color: '#ffffff',
+        fontSize: 18,
+    }
 });
 
 export default styles;

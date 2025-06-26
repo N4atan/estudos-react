@@ -12,7 +12,7 @@ export default function TaskCard({task, selectIsDone}){
             />
             <Text style={[styles.taskCardText, task.isDone && styles.taskCardTextDone]}
             >
-                {task.title}
+                {task.title} & {task.id}
             </Text>
         </View>
     );

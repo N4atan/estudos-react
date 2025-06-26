@@ -1,4 +1,5 @@
 import React from 'react'
+import { BlurView } from 'expo-blur';
 import { StyleSheet } from 'react-native';
 import TaskWritter from '../components/TaskWriter';
 
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         shadowColor: '#141414',
-        shadowOffset: { width: 1, height: 3},
+        shadowOffset: { width: 1, height: 3 },
         shadowOpacity: 0.3,
         shadowRadius: 5,
     },
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
         fontWeight: '600'
     },
     dayBoxToday: {
-        backgroundColor:  '#d9d9d9',
+        backgroundColor: '#d9d9d9',
     },
     calendar: {
         marginTop: 34,
@@ -55,6 +56,17 @@ const styles = StyleSheet.create({
         bottom: 0,
         left: 0,
         right: 0,
+        height: 100,
+        zIndex: 10,
+    },
+
+    blurBox: {
+        flex: 1,
+        paddingHorizontal: 20,
+        justifyContent: 'center',
+        backgroundColor: 'rgba(255, 255, 255, 0.3)', // Fallback para Android
+        borderTopWidth: 1,
+        borderTopColor: 'rgba(255, 255, 255, 0.3)',
     },
     areaTaskWritter: {
         flex: 1,
@@ -63,8 +75,6 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         justifyContent: 'space-between',
         width: '90%',
-        marginTop: 'auto',
-        marginBottom: 34
     },
     taskWritterInput: {
         backgroundColor: '#f0f0f0',
@@ -87,10 +97,10 @@ const styles = StyleSheet.create({
         color: '#ffffff',
         fontSize: 18,
     },
-    taskList:{
-        marginTop: 20,
-        paddingBottom: 70,
-        justifyContent: 'center',
+    taskList: {
+        flex: 1,
+        marginTop: 10,
+        paddingBottom: 110, // Altura do input fixo + margem
     },
     taskListHeader: {
         marginLeft: 28,
@@ -108,7 +118,7 @@ const styles = StyleSheet.create({
         borderColor: '#626262',
         borderRadius: 5,
         shadowColor: '#141414',
-        shadowOffset: { width: 1, height: 3},
+        shadowOffset: { width: 1, height: 3 },
         shadowOpacity: 0.3,
         shadowRadius: 5,
     },

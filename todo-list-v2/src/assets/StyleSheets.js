@@ -40,7 +40,6 @@ const styles = StyleSheet.create({
     },
     dayBoxToday: {
         backgroundColor:  '#d9d9d9',
-        
     },
     calendar: {
         marginTop: 34,
@@ -87,6 +86,37 @@ const styles = StyleSheet.create({
     taskWritterSaveText: {
         color: '#ffffff',
         fontSize: 18,
+    },
+    taskList:{
+        marginTop: 20,
+        paddingBottom: 70,
+        justifyContent: 'center',
+    },
+    taskListHeader: {
+        marginLeft: 28,
+        fontSize: 14,
+        fontWeight: '500'
+    },
+    taskCard: {
+        alignSelf: 'center',
+        alignItems: 'center',
+        width: '95%',
+        paddingHorizontal: 20,
+        paddingVertical: 20,
+        flexDirection: 'row',
+        borderWidth: 1,
+        borderColor: '#626262',
+        borderRadius: 5,
+        shadowColor: '#141414',
+        shadowOffset: { width: 1, height: 3},
+        shadowOpacity: 0.3,
+        shadowRadius: 5,
+    },
+    taskCardText: {
+        marginLeft: 15,
+    },
+    taskCardTextDone: {
+        textDecorationLine: 'line-through',
     }
 });
 

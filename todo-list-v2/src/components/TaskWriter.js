@@ -5,9 +5,21 @@ import styles from '../assets/StyleSheets'
 
 
 
-export default function TaskWritter(){
+export default function TaskWritter(Props){
     const [ title , onChangeTitle ] = useState('');
     const [] = useState();
+
+    const handleSave = () => {
+        if(title === '') return
+
+        const newTask = {
+            title,
+            isDone: false
+        };
+
+        Props.onSave(newTask);
+        onChangeTitle('');
+    }
 
 
     return (
@@ -21,7 +33,7 @@ export default function TaskWritter(){
                 />
 
                 <TouchableOpacity style={styles.taskWritterSave} >
-                    <Text style={styles.taskWritterSaveText} >
+                    <Text style={styles.taskWritterSaveText} onPress={handleSave}>
                         Add
                     </Text>
                 </TouchableOpacity>

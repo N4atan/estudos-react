@@ -5,13 +5,13 @@ import styles from '../assets/StyleSheets';
 
 export default function TaskWritter(Props) {
     const [title, onChangeTitle] = useState('');
-    const taskId = useRef(0);
+    
 
     const handleSave = () => {
         if (title === '') return;
 
         const newTask = {
-            id: taskId.current++,
+            id: Date.now(),
             title,
             isDone: false
         };
@@ -21,24 +21,19 @@ export default function TaskWritter(Props) {
     };
 
     return (
-        <View style={styles.fixedFooter}>
-            <BlurView intensity={5} tint="light" style={styles.blurBox}>
-                <SafeAreaView style={styles.areaTaskWritter}>
-                    <TextInput
-                        style={styles.taskWritterInput}
-                        autoFocus
-                        value={title}
-                        onChangeText={onChangeTitle}
-                        keyboardType='default'
-                        placeholder='O que precisa fazer?'
-                        placeholderTextColor="#999"
-                    />
+        <BlurView style={styles.areaTaskWritter} intensity={50} tint='light'>
+                <TextInput
+                    style={styles.taskWritterInput}
+                    value={title}
+                    onChangeText={onChangeTitle}
+                    keyboardType='default'
+                    placeholder='O que precisa fazer?'
+                    placeholderTextColor="#999"
+                />
 
-                    <TouchableOpacity style={styles.taskWritterSave} onPress={handleSave}>
-                        <Text style={styles.taskWritterSaveText}>Add</Text>
-                    </TouchableOpacity>
-                </SafeAreaView>
-            </BlurView>
-        </View>
+                <TouchableOpacity style={styles.taskWritterSave} onPress={handleSave}>
+                    <Text style={styles.taskWritterSaveText}>Add</Text>
+                </TouchableOpacity>
+        </BlurView>
     );
 }

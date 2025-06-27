@@ -7,10 +7,10 @@ export default function DayBox(Props){
         <View
         style={[styles.dayBox, Props.data.isToday && styles.dayBoxToday]}
         >
-            <Text style={styles.dayBoxText} >
+            <Text style={[styles.dayBoxText, Props.data.isToday && {color: '#ffffff'}]} >
                 {Props.data.nomeDia}
             </Text>
-            <Text style={styles.dayBoxText} >
+            <Text style={[styles.dayBoxText, Props.data.isToday && {color: '#ffffff'}]} >
                 {Props.data.numDia}
             </Text>
         </View>

@@ -6,8 +6,6 @@ import TaskWritter from '../components/TaskWriter';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
-        fontFamily: 'System'
     },
     header: {
         width: '100%',
@@ -40,58 +38,43 @@ const styles = StyleSheet.create({
         fontWeight: '600'
     },
     dayBoxToday: {
-        backgroundColor: '#d9d9d9',
+        backgroundColor: '#292929',
     },
     calendar: {
-        marginTop: 34,
+        marginTop: 10,
     },
     calendarTitle: {
         marginLeft: 24,
-        marginBottom: 16,
+        marginBottom: 14,
         fontSize: 28,
         fontWeight: '700'
     },
-    fixedFooter: {
-        position: 'absolute',
+    areaTaskWritter: {
+        position: 'absolute',  // Mudar de 'sticky' para 'absolute'
         bottom: 0,
-        left: 0,
-        right: 0,
-        height: 100,
-        zIndex: 10,
+        zIndex: 1000,
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        paddingBottom: 20,
     },
 
-    blurBox: {
-        flex: 1,
-        paddingHorizontal: 20,
-        justifyContent: 'center',
-        backgroundColor: 'rgba(255, 255, 255, 0.3)', // Fallback para Android
-        borderTopWidth: 1,
-        borderTopColor: 'rgba(255, 255, 255, 0.3)',
-    },
-    areaTaskWritter: {
-        flex: 1,
-        flexDirection: 'row',
-        alignItems: 'center',
-        alignSelf: 'center',
-        justifyContent: 'space-between',
-        width: '90%',
-    },
     taskWritterInput: {
         backgroundColor: '#f0f0f0',
         color: '#141414',
         fontSize: 14,
         width: '75%', // ✅ Ajuste para 75% (evita conflito com o botão)
         height: 60,
-        paddingLeft: 10,
+        paddingHorizontal: 10,
         borderRadius: 5,
     },
     taskWritterSave: {
         backgroundColor: '#141414',
-        width: '23%', // ✅ Ajuste para 23% (evita quebra de linha)
+        width: '20%', // ✅ Ajuste para 23% (evita quebra de linha)
         height: 60,
         borderRadius: 5,
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'center'
     },
     taskWritterSaveText: {
         color: '#ffffff',
@@ -100,9 +83,9 @@ const styles = StyleSheet.create({
     taskList: {
         flex: 1,
         marginTop: 10,
-        paddingBottom: 110, // Altura do input fixo + margem
     },
     taskListHeader: {
+        marginVertical: 10,
         marginLeft: 28,
         fontSize: 14,
         fontWeight: '500'
@@ -121,13 +104,8 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 1, height: 3 },
         shadowOpacity: 0.3,
         shadowRadius: 5,
+
     },
-    taskCardText: {
-        marginLeft: 15,
-    },
-    taskCardTextDone: {
-        textDecorationLine: 'line-through',
-    }
 });
 
 export default styles;

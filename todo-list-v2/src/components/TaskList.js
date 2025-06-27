@@ -3,30 +3,24 @@ import { SafeAreaView, View, Text, SectionList } from 'react-native';
 import TaskCard from './TaskCard';
 import styles from '../assets/StyleSheets';
 
-export default function TaskList({ arrayTask, selectIsDone, onScrollHeader }) {
-    const handleScroll = (event) => {
-        const offsetY = event.nativeEvent.contentOffset.y;
-        if (onScrollHeader) onScrollHeader(offsetY <= 30);
-    };
-
+export default function TaskList({ arrayTask, selectIsDone, selectIfDelete }) {
     return (
         <SafeAreaView style={styles.taskList}>
             <SectionList
                 sections={[
-                    { title: 'Afazeres', data: arrayTask.filter(tarefa => !tarefa.isDone) },
-                    { title: 'Concluidas', data: arrayTask.filter(tarefa => tarefa.isDone) }
+                    { title: 'Afazeres'   , colorTitle: '#f72c2c' , data: arrayTask.filter(tarefa => !tarefa.isDone) },
+                    { title: 'Concluidas' , colorTitle: '#2cf736' , data: arrayTask.filter(tarefa => tarefa.isDone) }
                 ]}
-                renderSectionHeader={({ section: { title } }) => (
-                    <Text style={styles.taskListHeader}>{title}</Text>
+                renderSectionHeader={({ section }) => (
+                    section.data.length > 0 && <Text style={[styles.taskListHeader, {color: section.colorTitle}]}>
+                        {section.title} - {section.data.length}
+                    </Text>
                 )}
-                keyExtractor={(item) => item.id.toString()} // Corrigido: adicione .toString()
+                keyExtractor={(item) => item.id}
                 renderItem={({ item }) => (
-                    <TaskCard task={item} selectIsDone={selectIsDone} />
+                    <TaskCard task={item} selectIsDone={selectIsDone} selectIfDelete={selectIfDelete} />
                 )}
                 ItemSeparatorComponent={() => <View style={{ height: 20 }} />}
-                onScroll={handleScroll}
-                scrollEventThrottle={16}
-                contentContainerStyle={{ paddingBottom: 110 }}
             />
         </SafeAreaView>
     );
